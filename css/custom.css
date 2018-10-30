@@ -162,6 +162,8 @@ h2.huge {
 
 /* Central images */
 .title-image {
+  display: flex;
+  justify-content: center;
   max-width: 100%;
   margin: auto;
   padding-bottom: 20px;
