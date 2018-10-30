@@ -1,4 +1,4 @@
-# Academic Website Template
+# Kevin Wilson's Website
 
 This is a simple academic website template.
 
