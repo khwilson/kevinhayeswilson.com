@@ -1,30 +1,144 @@
----
-layout: default
-active: papers
----
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <title>Kevin H. Wilson's Webpage</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-88197802-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-88197802-3');
+    </script>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link href="css/lato100.css" rel="stylesheet">
+    <link href="css/lato300.css" rel="stylesheet" type="text/css">
+    <link href="css/lato400.css" rel="stylesheet" type="text/css">
+    <link href="css/lato700.css" rel="stylesheet" type="text/css">
+
+    <link href="css/custom.css" rel="stylesheet">
+  </head>
+  <body>
+<div class="container ">
+
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light">
+<button class="navbar-toggler custom-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="if-collapsed">Menu</span>
+    <span class="if-not-collapsed">Close</span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="papers.html">Papers  <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="cv.pdf">CV </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+
+
+<div class="container">
+  <h1 class="justify-content-center">Kevin H. Wilson</div>
+</div>
 
 <div class="container">
   <section>
     <h2>Refereed Publications</h2>
     <ul>
-    {% for paper in site.data.papers.papers %}
-      <li>{% if paper.link %}<a href="{{ paper.link }}">{{ paper.title }}</a> {% else %} {{ paper.title }} {% endif %}
-          {% if paper.coauthors %} (With {{ paper.coauthors }}.) {% endif %}
-          {% if paper.publishedat %} <span style="font-style: italic">{{ paper.publishedat }}.</span> {% endif %}
-          {% if paper.description %} {{ paper.description }} {% endif %}</li>
-    {% endfor %}
+    
+      <li> Counting D4-extensions of Q 
+           (With Ali Altug, Arul Shankar, Ila Varma.) 
+           <span style="font-style: italic">Submitted.</span> 
+           We exploit a symmetry of the group of symmetries of the square to give the asymptotic density of discriminants of D4-extensions of the rationals. </li>
+    
+      <li><a href="https://arxiv.org/abs/1807.03860">A Cautionary Tail: A Framework and Case Study for Testing Predictive Model Validity</a> 
+           (With Peter C. Casey and David Yokum.) 
+           <span style="font-style: italic">MUD3 @ SIGKDD'18.</span> 
+           We attempt to find rats in the District of Columbia using machine learning and subject matter expertise from urban rodentology. We do well at predicting 311 calls, but much less well at extrapolation. We provide a framework for field studies for machine learning models. </li>
+    
+      <li><a href="https://arxiv.org/abs/1805.03597">Using Machine Learning to Assess the Risk of and Prevent Water Main Breaks</a> 
+           (With Avishek Kumar, Ali Rizvi, Benjamin Brooks, R. Ali Vanderveld, Chad Kenney, Sam Edelstein, Adria Finch, Andrew Maxwell, Joe Zuckerbraun, Rayid Ghani.) 
+           <span style="font-style: italic">SIGKDD'18.</span> 
+           We build a model to predict which water mains will break in the coming year in Syracuse, NY. We perform quite well, and the model is being used to guide proactive water main repair. </li>
+    
+      <li><a href="https://pdfs.semanticscholar.org/aca7/71c587933bdd27e1cdb290b855ba9461f74a.pdf">Estimating student proficiency: Deep is not the panacea</a> 
+           (With Xiong, X., Khajah, M., Lindsey, R.V., Zhao, S., Karklin, Y., Van Inwegen, E.G., Han, B., Ekanadham, C., Beck, J.E., Heffernan, N., Mozer, M.C..) 
+           <span style="font-style: italic">Workshop on Machine Learning in Education @ NIPS'16.</span> 
+           A summary of three distinct critiques of Deep Knowledge Tracing as a method of estimating student proficiency. </li>
+    
+      <li><a href="https://arxiv.org/abs/1604.02336">Back to the basics: Bayesian extensions of IRT outperform neural networks for proficiency estimation</a> 
+           (With Yan Karklin, Bojian Han, and Chaitu Ekanadham.) 
+           <span style="font-style: italic">EDM'16.</span> 
+           We show that the original Deep Knowledge Tracing paper is fundamentally flawed and that, after correcting its errors, that DKT is outperformed by a simple hierarchical model on multiple data sets. </li>
+    
+      <li><a href="https://www.sciencedirect.com/science/article/pii/S0097316510000518">Combinatorics on Partial Word Correlations</a> 
+           (With Francine Blanchet-Sadri, Justin Fowler, Joshua D. Gafni.) 
+           <span style="font-style: italic">J. Combin. Theory Series A, Vol 117 Issue 6 (2010).</span> 
+          </li>
+    
+      <li> Correlations of Partial Words 
+           (With Francine Blanchet-Sadri, Joshua D. Gafni.) 
+           <span style="font-style: italic">STACS'07.</span> 
+          </li>
+    
     </ul>
   </section>
   <section>
     <h2>Whitepapers</h2>
     <ul>
-    {% for paper in site.data.papers.whitepapers %}
-      <li>{% if paper.link %}<a href="{{ paper.link }}">{{ paper.title }}</a> {% else %} {{ paper.title }} {% endif %}
-          {% if paper.publishedas %} As {{ paper.publishedas }}. {% endif %}
-          {% if paper.coauthors %} (With {{ paper.coauthors }}.) {% endif %}
-          {% if paper.publishedat %} <span style="font-style: italic">{{ paper.publishedat }}.</span> {% endif %}
-          {% if paper.description %} {{ paper.description }} {% endif %}</li>
-    {% endfor %}
+    
+      <li><a href="https://github.com/thelabdc/NEAR-Act-public">A Report on Felony Crime in the District of Columbia in 2016</a> 
+           As Office of the Deputy Mayor for Public Safety and Justice of the District of Columbia. 
+           (With Eric Foster-Moore and Paul Testa.) 
+           <span style="font-style: italic">Council of the District of Columbia January 2018.</span> 
+           A summary of felony crimes (mandated by law) in the District of Columbia in 2016. </li>
+    
+      <li><a href="https://osf.io/ge5h4/">Encouraging MPD Officer Applications via Postcard: A Randomized Controlled Trial</a> 
+          
+           (With Don Braman, Rachel Breslin, Antonio Charland, Stacy Small, Cynthia Dumas, J. Weill, E. Linos, K. Reddy, and David Yokum.) 
+          
+           We performed an RCT to determine what direct mail outreach strategy is most effective for getting DC residents to sign up to be police officers. </li>
+    
+      <li> The Knewton Platform: A General-Purpose Adaptive Learning Platform 
+          
+           (With Zachary Nichols.) 
+           <span style="font-style: italic">Online 2015.</span> 
+           A deep dive into how Knewton's online learning platform worked at the time. </li>
+    
+      <li> Reducing the Gap: How Adaptive Follow-Ups Help Struggling Students 
+          
+           (With Hillary Green-Lerman and David Kuntz.) 
+           <span style="font-style: italic">Online October 2015.</span> 
+           A retrospective study exploiting variation in who used the Knewton platform to determine the effects of immediate, targeted follow ups on proficiency. </li>
+    
     </ul>
   </section>
 </div>
+
+
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
