@@ -18,9 +18,3 @@ exclude:
   - vendor/bundle
 
 timezone: America/New_York
-
-mini_magick:
-  thumbnail:
-    source: images/gallery
-    destination: images/gallery/thumbnail
-    resize: "100x100"
