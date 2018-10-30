@@ -7,8 +7,9 @@
     "gulp": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Kevin H. Wilson",
   "license": "ISC",
+  "repository": "https://github.com/khwilson/kevinhayeswilson.com",
   "devDependencies": {
     "child_process": "^1.0.2",
     "gulp": "^3.9.1",
