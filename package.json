@@ -1,0 +1,22 @@
+{
+  "name": "wedding-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "child_process": "^1.0.2",
+    "gulp": "^3.9.1",
+    "gulp-gh-pages": "tekd/gulp-gh-pages",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-shell": "^0.6.5",
+    "gulp-util": "^3.0.7",
+    "imagemin-jpegtran": "^5.0.2",
+    "run-sequence": "^2.2.1"
+  }
+}

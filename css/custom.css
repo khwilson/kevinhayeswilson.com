@@ -1,0 +1,195 @@
+/* Default fonts and sizing for pages */
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #ffeecc;
+}
+
+.container {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  text-size-adjust: 100%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+
+/* Navbar corrections */
+.custom-toggler {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  text-size-adjust: 100%;
+  border: none;
+
+  width: 100%;
+  float: none;
+  margin: 0 auto;
+  border-width:0;
+  border-radius:0;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.custom-toggler:focus {
+  outline: none;
+}
+
+.nav-link {
+  text-transform: uppercase;
+}
+
+.navbar-collapse {
+  text-align: center;
+}
+
+[data-toggle="collapse"].collapsed .if-not-collapsed {
+  display: none;
+}
+
+[data-toggle="collapse"]:not(.collapsed) .if-collapsed {
+  display: none;
+}
+
+/* Headers */
+h1 {
+  text-align: center;
+  font-size: 72px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  font-variant: thin;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+section a {
+  color: rgba(0, 0, 0, .5);
+  font-weight: 700;
+}
+
+section a:hover {
+  color: #000;
+  font-weight: 700;
+}
+
+/* Multiple section pages */
+section {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  text-size-adjust: 100%;
+  font-weight: 400;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Jumbotron */
+.jumbotron {
+  background-color: transparent;
+  background-image: url("/images/farm.jpg");
+  background-size: auto 100%;
+  background-position: center;
+  min-height: 100%;
+  min-height: 90vh;
+  padding-top: 1rem;
+  background-repeat: no-repeat;
+}
+
+.container-jumbotron {
+  padding: 0px;
+}
+
+@media screen and (min-width: 768px) {
+.jumbotron {
+  padding-top: 4rem;
+}
+}
+
+@media screen and (min-height: 1200px) {
+.jumbotron {
+  min-height: 720px;
+  max-height: 720px;
+}
+}
+
+h1.huge {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 72px;
+  font-weight: 300;
+}
+
+h2.huge {
+  margin-top: 10px;
+  font-size: 36px;
+  text-align: center;
+  font-weight: 300;
+}
+
+@media screen and (min-width: 574px) {
+  h1.huge {
+    margin-top: 20px;
+    font-size: 96px;
+    font-weight: 100;
+  }
+
+  h2.huge {
+    font-size: 48px;
+    font-weight: 100;
+  }
+}
+
+/* Central images */
+.title-image {
+  max-width: 100%;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+@media screen and (min-width: 574px) {
+  .title-image {
+    max-width: 460px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title-image {
+    max-width: 550px;
+  }
+}
+
+.figure-caption a {
+  color: rgb(0, 0, 0, 0.5);
+  font-weight: 700;
+  text-align: right;
+}
+
+#responseForm .form-input-label {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+#responseForm {
+  margin-top: 1em;
+}

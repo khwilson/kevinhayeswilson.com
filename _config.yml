@@ -1,0 +1,26 @@
+title: Kevin H. Wilson's Webpage
+email:
+description: > # this means to ignore newlines until "baseurl:"
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://kevinhayeswilson.com"
+
+# Build settings
+markdown: kramdown
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - node_modules
+  - gulpfile.js
+  - vendor/bundle
+
+timezone: America/New_York
+
+mini_magick:
+  thumbnail:
+    source: images/gallery
+    destination: images/gallery/thumbnail
+    resize: "100x100"

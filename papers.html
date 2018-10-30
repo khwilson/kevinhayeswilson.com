@@ -1,0 +1,30 @@
+---
+layout: default
+active: papers
+---
+
+<div class="container">
+  <section>
+    <h2>Refereed Publications</h2>
+    <ul>
+    {% for paper in site.data.papers.papers %}
+      <li>{% if paper.link %}<a href="{{ paper.link }}">{{ paper.title }}</a> {% else %} {{ paper.title }} {% endif %}
+          {% if paper.coauthors %} (With {{ paper.coauthors }}.) {% endif %}
+          {% if paper.publishedat %} <span style="font-style: italic">{{ paper.publishedat }}.</span> {% endif %}
+          {% if paper.description %} {{ paper.description }} {% endif %}</li>
+    {% endfor %}
+    </ul>
+  </section>
+  <section>
+    <h2>Whitepapers</h2>
+    <ul>
+    {% for paper in site.data.papers.whitepapers %}
+      <li>{% if paper.link %}<a href="{{ paper.link }}">{{ paper.title }}</a> {% else %} {{ paper.title }} {% endif %}
+          {% if paper.publishedas %} As {{ paper.publishedas }}. {% endif %}
+          {% if paper.coauthors %} (With {{ paper.coauthors }}.) {% endif %}
+          {% if paper.publishedat %} <span style="font-style: italic">{{ paper.publishedat }}.</span> {% endif %}
+          {% if paper.description %} {{ paper.description }} {% endif %}</li>
+    {% endfor %}
+    </ul>
+  </section>
+</div>
