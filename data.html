@@ -42,8 +42,8 @@
 
   <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">Home  <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="papers.html">Papers </a>
@@ -51,8 +51,8 @@
       <li class="nav-item">
         <a class="nav-link" href="cv.pdf">CV </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="data.html">Data </a>
+      <li class="nav-item active">
+        <a class="nav-link" href="data.html">Data  <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
@@ -65,22 +65,18 @@
 </div>
 
 <div class="container">
-  <div class="container title-image">
-    <figure class="figure">
-      <img class="figure-img img-fluid rounded" src="images/me.jpg" alt="A picture of me on a mountain">
-    </figure>
-  </div>
   <section>
-    <p>Welcome to my personal website. Here you'll find links to my <a
-       href="papers.html">papers</a> and my <a href="cv.pdf">CV</a>. Feel free to contact me at [first initial][last
-       initial][last name][at][popular email service operated by Google].</p>
-  </section>
-  <hr>
-  <section>
-    <h2>Some fun links</h2>
-    <p><a href="http://thelab.dc.gov">The Lab @ DC</a> where I currently work.</p>
-    <p><a href="https://kevinhayeswilson.com/redraw">Redraw the States</a>. A fun project where I let people redraw the US states to see the sensitivity of the Electoral College.</p>
-    <p><a href="https://kevinhayeswilson.com/website.pdf">So you want to build an academic website?</a> Current instructions I have for building an academic website. You can also make suggestions <a href="https://docs.google.com/document/d/1RaDLsGPvNXxXtU_bzA0mOVkuXMqMXvafVNjSzUpUgSM/edit#">here</a>.
+    <h2>Converted Data Sets</h2>
+    <p>These are data sets which were originally available in some terrible format that I've converted into something more palatable (usually CSVs). Reach out if you have any questions!</p>
+    
+      <div class="container dataset">
+        <h4>United States Sentencing Commission Individual Offender Data Sets</h4>
+        <p><a href="https://www.ussc.gov/research/datafiles/commission-datafiles">Original data set</a></p>
+        <p><a href="https://github.com/khwilson/SentencingCommissionDatasets">Converted data set</a></p>
+        <p><strong>Description</strong>: The US Sentencing Commission puts out a yearly report which includes every sentence which was meted out in the federal court system. USSC puts these files out in a very non-standard fixed-width format along with SAS and SPSS programs to read them into those programs. </p><p> This is a straight translation of these fixed-width files into CSVs for consumption in other environments.
+</p>
+      </div>
+    
   </section>
 </div>
 
