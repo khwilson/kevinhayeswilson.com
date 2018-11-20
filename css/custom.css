@@ -195,3 +195,9 @@ h2.huge {
 #responseForm {
   margin-top: 1em;
 }
+
+.dataset {
+  border-top: 1px solid #ccc;
+  padding-top: 12px;
+  padding-bottom: 6px;
+}

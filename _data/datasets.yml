@@ -1,0 +1,13 @@
+datasets:
+  - title: United States Sentencing Commission Individual Offender Data Sets
+    links:
+      original: https://www.ussc.gov/research/datafiles/commission-datafiles
+      converted: https://github.com/khwilson/SentencingCommissionDatasets
+    description: >
+      The US Sentencing Commission puts out a yearly report which includes every sentence
+      which was meted out in the federal court system. USSC puts these files out in a
+      very non-standard fixed-width format along with SAS and SPSS programs to read them into
+      those programs.
+      </p><p>
+      This is a straight translation of these fixed-width files into CSVs for consumption
+      in other environments.

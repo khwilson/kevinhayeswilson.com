@@ -1,0 +1,19 @@
+---
+layout: default
+active: data
+---
+
+<div class="container">
+  <section>
+    <h2>Converted Data Sets</h2>
+    <p>These are data sets which were originally available in some terrible format that I've converted into something more palatable (usually CSVs). Reach out if you have any questions!</p>
+    {% for dataset in site.data.datasets.datasets %}
+      <div class="container dataset">
+        <h4>{{ dataset.title }}</h4>
+        <p><a href="{{ dataset.links.original }}">Original data set</a></p>
+        <p><a href="{{ dataset.links.converted }}">Converted data set</a></p>
+        <p><strong>Description</strong>: {{ dataset.description }}</p>
+      </div>
+    {% endfor %}
+  </section>
+</div>
