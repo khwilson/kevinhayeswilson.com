@@ -10,7 +10,7 @@ jobs:
         - master
 
     docker:
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: khwilson/ruby-node:2.4.4-10
 
     working_directory: ~/repo
 

@@ -1,7 +1,7 @@
 {
-  "name": "academic-website",
+  "name": "kevinhayeswilsondotcom",
   "version": "1.0.0",
-  "description": "",
+  "description": "Kevin Hayes Wilson's website",
   "main": "index.js",
   "scripts": {
     "gulp": "gulp",
@@ -11,13 +11,8 @@
   "license": "ISC",
   "repository": "https://github.com/khwilson/kevinhayeswilson.com",
   "devDependencies": {
-    "child_process": "^1.0.2",
-    "gulp": "^3.9.1",
-    "gulp-gh-pages": "tekd/gulp-gh-pages",
-    "gulp-imagemin": "^4.1.0",
-    "gulp-shell": "^0.6.5",
-    "gulp-util": "^3.0.7",
-    "imagemin-jpegtran": "^5.0.2",
-    "run-sequence": "^2.2.1"
+    "gulp": "^4.0.0",
+    "gulp-gh-pages": "git+https://github.com/shinnn/gulp-gh-pages#v0.6.0-6",
+    "gulp-imagemin": "^5.0.3"
   }
 }

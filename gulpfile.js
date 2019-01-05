@@ -1,43 +1,38 @@
-var gulp            = require('gulp'),
-    shell           = require('gulp-shell'),
-    ghPages         = require('gulp-gh-pages'),
-    imagemin        = require('gulp-imagemin'),
-    cp              = require('child_process'),
-    runSequence     = require('run-sequence').use(gulp);
+const cp = require('child_process')
+const gulp = require('gulp')
+const ghPages = require('gulp-gh-pages')
+const imagemin = require('gulp-imagemin')
 
-var messages = {
-    jekyllBuild: 'building...'
-};
+const image = () => {
+  return gulp.src('src/images/**/*')
+      .pipe(imagemin())
+      .pipe(gulp.dest('_site/images'))
+}
 
-gulp.task('image', function () {
-  return gulp.src('images/**/*')
-    .pipe(imagemin([imagemin.jpegtran()], { verbose: true }))
-    .pipe(gulp.dest('_site/images'));
-});
+const contentful = () => cp.spawn('bundle', ['exec', 'jekyll', 'contentful'], { stdio: 'inherit' })
 
+const circleci = () => {
+  return gulp.src('.circleci/*')
+    .pipe(gulp.dest('_site/.circleci'))
+}
 
-// Deploy Tasks
-gulp.task('build:prod', shell.task(['bundle exec jekyll build']));
+const pushGHSource = () => cp.spawn('git', ['push', 'origin', 'source'], { stdio: 'inherit' })
 
-gulp.task('push-gh-master', shell.task(['git push origin master']));
-
-gulp.task('push-gh-pages', function () {
+const pushGHPages = () => {
   return gulp.src('_site/**/*')
-    .pipe(ghPages({ force: true }));
-});
+             .pipe(ghPages({ force: true, branch: 'master' }))
+}
 
-gulp.task('deploy', function (callback) {
-  runSequence(
-    'build:prod',
-    'image',
-    'push-gh-master',
-    'push-gh-pages',
-    callback
-  );
-});
+const build = () => cp.spawn('bundle', ['exec', 'jekyll', 'build'], { stdio: 'inherit' })
 
-// Dev tasks
-gulp.task('jekyll', shell.task(['bundle exec jekyll build --incremental --config _config.yml']));
-gulp.task('jekyll-force', shell.task(['bundle exec jekyll build --config _config.yml']));
+const deploy = gulp.series(contentful, build, image, circleci, pushGHSource, pushGHPages)
 
-gulp.task('serve', shell.task(['bundle exec jekyll serve']));
+module.exports = {
+  circleci,
+  contentful,
+  image,
+  pushGHSource,
+  pushGHPages,
+  build,
+  deploy
+}
