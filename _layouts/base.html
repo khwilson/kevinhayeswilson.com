@@ -10,7 +10,7 @@
     <meta property="og:site_name" content="Kevin H. Wilson">
     <meta property="og:type" content="object">
     <meta property="og:title" content="{% if page.opengraph and page.opengraph.title %}{{ page.opengraph.title }}{% else %}Kevin H. Wilson{% endif %}">
-    <meta property="og:url" content="{{ url_for(request.endpoint) }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta name="twitter:creator" content="@khayeswilson">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
