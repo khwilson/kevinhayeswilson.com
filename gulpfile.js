@@ -18,7 +18,7 @@ const pushGHSource = () => cp.spawn('git', ['push', 'origin', 'master'], { stdio
 
 const pushGHPages = () => {
   return gulp.src('_site/**/*')
-             .pipe(ghPages({ force: true })
+             .pipe(ghPages({ force: true }))
 }
 
 const build = () => cp.spawn('bundle', ['exec', 'jekyll', 'build'], { stdio: 'inherit' })
