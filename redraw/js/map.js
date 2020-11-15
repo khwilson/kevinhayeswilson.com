@@ -46,6 +46,18 @@ var setYear = function(newYear) {
       'oth': 'Other'
     }
     loser = 'Hillary Clinton';
+  } else if (newYear == '2020') {
+    year = newYear;
+    dataFile = 'data/us2020.json';
+    partyToCandidate = {
+      'dem': 'Joe Biden',
+      'gop': 'Donald Trump',
+      'grn': 'Green',
+      'lib': 'Jo Jorgensen',
+      'una': 'Unaffiliated',
+      'oth': 'Other'
+    };
+    loser = 'Donald Trump';
   } else {
     year = newYear;
     dataFile = 'data/us.json';
@@ -65,8 +77,10 @@ if (getParameterByName('year') === '2012') {
   setYear('2012');
 } else if (getParameterByName('year') === '2016i') {
   setYear('2016i');
-} else {
+} else if (getParameterByName('year') == '2016') {
   setYear('2016');
+} else {
+  setYear('2020');
 }
 
 var numberToLetter = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -92,7 +106,6 @@ for (var i=0; i<STATE_ABBREVS.length; ++i) {
 }
 
 var tableHeaders = ['population', 'electors', 'dem', 'gop', 'lib', 'grn', 'una', 'oth'];
-
 
 /* Global state variables */
 var currentMode = 'pickup';
