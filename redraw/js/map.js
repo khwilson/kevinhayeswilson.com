@@ -108,7 +108,13 @@ for (var i=0; i<STATE_ABBREVS.length; ++i) {
 var tableHeaders = ['population', 'electors', 'dem', 'gop', 'lib', 'grn', 'una', 'oth'];
 
 /* Global state variables */
+var MOVE_KEY = 77;
+var HOLD_KEY = 81;  // Q
+var ERASE_KEY = 87;  // W
+
 var currentMode = 'pickup';
+var isHoldDown = false;
+var isEraseDown = false;
 var countyMode = 'show';
 var showStateColors = true;
 var stateTotals = {}
@@ -129,11 +135,25 @@ var switchModeFunction = function() {
 }
 switchModeButton.on('click', switchModeFunction);
 // keyboard shortcut to activate moving counties
-d3.select("body").on("keydown", function(ev) {
-  if (d3.event.keyCode==77) {
-    switchModeFunction()
-  };
-});
+d3.select("body")
+  .on("keydown", function(ev) {
+    if (d3.event.keyCode == MOVE_KEY) {
+      switchModeFunction()
+    } else if (d3.event.keyCode == HOLD_KEY) {
+      isEraseDown = false;
+      isHoldDown = true;
+    } else if (d3.event.keyCode == ERASE_KEY) {
+      isEraseDown = true;
+      isHoldDown = false;
+    }
+  })
+  .on("keyup", function(ev) {
+    if (d3.event.keyCode == HOLD_KEY) {
+      isHoldDown = false;
+    } else if (d3.event.keyCode == ERASE_KEY) {
+      isEraseDown = false;
+    }
+  });
 
 var countyModeButton = d3.select("#countyModeButton").html("Hide Counties");
 var countyModeFunction = function () {
@@ -366,21 +386,32 @@ var update = function(resizeUpdate) {
                 newStateData[key] += hasOrZero(dd.properties, key);
                 oldStateData[key] -= hasOrZero(dd.properties, key);
               }
-            });
+            }
+          );
           update();
           switchModeFunction();
         }
       })
       .on('mousemove', function(d) {
         // Show county level detail
-        var mouse = d3.mouse(g.node()).map(function(d) {
-          return parseInt(d);
-        });
+        d3.mouse(g.node()).map(parseInt);
 
         tooltip.classed('hidden', false)
           .attr('style', 'left:' + (d3.event.pageX + 15) + 'px; top:' + (d3.event.pageY - 15) + 'px');
       })
       .on('mouseover', function(d) {
+        if (isHoldDown && currentMode === 'pickup') {
+          // If the hold key is down and we're in pickup mode, select the county
+          var me = d3.select(this);
+          me.classed(getColorClass(d), false);
+          me.classed("selection-color", true);
+        } else if (isEraseDown && currentMode === 'pickup') {
+          // If the erase key is down and we're in pickup mode, deselect the county
+          var me = d3.select(this);
+          me.classed(getColorClass(d), true);
+          me.classed("selection-color", false);
+        }
+
         // Initialize the county level detail
         var theHeading = tooltipTitle.selectAll(".tooltip-title-heading").data([d.properties.name]);
         theHeading.enter().append("div").attr('class', 'tooltip-title-heading');
@@ -565,7 +596,7 @@ var getShareUrl = function() {
     }
   }
   var baseUrl = window.location.origin + window.location.pathname + '?';
-  if (year !== '2016') {
+  if (year !== '2020') {
     baseUrl += 'year=' + year + '&';
   }
   return baseUrl + 'share=' + shareUrl.join('');
