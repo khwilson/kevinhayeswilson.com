@@ -537,8 +537,24 @@ var execReset = function(usData, useUrl) {
           return 0;
         }
       });
-      for (var i=0; i<shareParameter.length; ++i) {
-        var num = letterToNumber[shareParameter[i]];
+
+      var newShareParameter = [];
+      var curNumber = '';
+      for (var i = 0; i < shareParameter.length; ++i) {
+        var letter = shareParameter[i];
+        if (/\d/.test(letter)) {
+          curNumber += letter;
+        } else {
+          curNumber = parseInt(curNumber || '1');
+          for (var j = 0; j < curNumber; ++j) {
+            newShareParameter.push(letter);
+          }
+          curNumber = '';
+        }
+      }
+
+      for (var i=0; i<newShareParameter.length; ++i) {
+        var num = letterToNumber[newShareParameter[i]];
         var geom = us.objects.counties.geometries[i];
         if (!geom) {
           console.log("problem ", i);
@@ -586,15 +602,31 @@ var getShareUrl = function() {
       return 0;
     }
   });
+
   shareUrl = [];
+  var curLetter = null;
+  var curStreak = 0;
+
   for (var i=0; i<us.objects.counties.geometries.length; ++i) {
     var geom = us.objects.counties.geometries[i];
-    if (geom.hasOwnProperty('properties')) {
-      shareUrl.push(numberToLetter[stateToNumber[geom.properties.state]]);
+    var letter = geom.hasOwnProperty('properties') ?
+      numberToLetter[stateToNumber[geom.properties.state]] :
+      numberToLetter[51];
+
+    if (letter === curLetter) {
+      curStreak++;
     } else {
-      shareUrl.push(numberToLetter[51]);
+      if (curStreak === 1) {
+        shareUrl.push(curLetter);
+      } else if (curStreak > 1) {
+        shareUrl.push(curStreak + curLetter);
+      }
+      curLetter = letter;
+      curStreak = 1;
     }
   }
+  shareUrl.push(curStreak + curLetter);
+
   var baseUrl = window.location.origin + window.location.pathname + '?';
   if (year !== '2020') {
     baseUrl += 'year=' + year + '&';
