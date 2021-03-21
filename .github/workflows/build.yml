@@ -1,0 +1,48 @@
+name: Build and Deploy Website
+on: ["push", "pull_request"]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
+
+      - name: Pull cache if available
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: bundle-use-ruby-2.6-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            bundle-use-ruby-2.6-
+
+      - name: bundle install
+        run: |
+          gem install bundler:2.1.4
+          bundle config deployment true
+          bundle config path vendor/bundle
+          bundle install --jobs 4
+
+      - name: Build the page
+        run: |
+          # Jekyll offers no option for non-zero exit codes on parse errors
+          # So write some custom code here
+          #
+          # c.f. https://github.com/jekyll/jekyll/issues/5257
+          [ ! $(bundle exec jekyll build | tee /dev/stderr | grep 'Error: YAML Exception') ]
+
+      - name: Push to GH Pages
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: _site
