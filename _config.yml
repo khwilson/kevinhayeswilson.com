@@ -11,10 +11,6 @@ markdown: kramdown
 exclude:
   - Gemfile
   - Gemfile.lock
-  - package.json
-  - package-lock.json
-  - node_modules
-  - gulpfile.js
   - vendor/bundle
 
 timezone: America/New_York
