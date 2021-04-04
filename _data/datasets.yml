@@ -11,3 +11,10 @@ datasets:
       </p><p>
       This is a straight translation of these fixed-width files into CSVs for consumption
       in other environments.
+
+  - title: Map of Rhode Island ZIP Codes and City Names (2021)
+    links:
+      converted: https://kevinhayeswilson.com/rhode_island_zip_city_map_2021.csv
+    description: >
+      I work a lot in Rhode Island and I frequently need a map between ZIP Codes and common
+      city names. This is the one that I use.
