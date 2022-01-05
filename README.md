@@ -4,20 +4,18 @@ This is a simple academic website template.
 
 ## Setup and Deployment
 
-This is a jekyll website whose deployment is mnaged by gulp. You will need both
-ruby and node installed to manage this website locally. To do so on a Mac using
-homebrew, run
+This is a jekyll website. You will need ruby in order to build it.
+To do so on a Mac using homebrew, run
 
 ```bash
-$ brew install ruby node npm
+$ brew install ruby
 ```
 
-Once those are installed, you will need to install the dependencies of this
+Once that's installed, you will need to install the dependencies of this
 particular project. To do so, run
 
 ```bash
 $ bundle install
-$ npm install
 ```
 
 To see the website locally, run
@@ -26,8 +24,3 @@ To see the website locally, run
 $ bundle exec jekyll serve
 ```
 
-To deploy, run
-
-```bash
-gulp deploy
-```
