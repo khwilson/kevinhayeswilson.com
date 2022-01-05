@@ -1,6 +1,11 @@
 papers:
+  - title: The limited reach of nudges: Evidence from a statewide vaccination RCT
+    link: Forthcoming
+    coauthors: Nat Rabb, Megan Swindal, David Glick, Jake Bowers, Anna Tomasulo, Zayid Oyelami, David Yokum
+    publishedat: Nature (in press)
+    description: An RCT on the effects of different messages encouraging people to get vaccinated. We find that several weeks after vaccinations were available to all study participants, no particular message has any significant effect on vaccine uptake.
   - title: "Early Alert Systems During a Pandemic: A Simulation Study on the Impact of Concept Drift"
-    link: Forthcoming.
+    link: https://dl.acm.org/doi/10.1145/3448139.3448190
     coauthors: Paul Xu
     publishedat: LAK'21
     description: Early Alert Systems are quickly becoming commonplace in the educational space, especially for predicting drop out. We explore potential effects of the COVID-19 pandemic on the quality of data these models receive and what the impacts on their predictions may be.
@@ -10,9 +15,9 @@ papers:
     publishedat: Drug and Alcohol Dependence. Volume 219, 1 February 2021
     description: "Utilizing Rhode Island's Ecosystem of administrative data, we find that the majority (58%) of Medicaid recipients did not enroll in opioid agonist therapy within 6 months of diagnosis. We explore various potential protective factors."
   - title: The number of quartic D4-fields ordered by conductor
-    link: https://arxiv.org/pdf/1704.01729.pdf
+    link: https://ems.press/journals/jems/articles/998322
     coauthors: Ali Altug, Arul Shankar, Ila Varma
-    publishedat: Journal of the European Mathematical Society. Forthcoming.
+    publishedat: Journal of the European Mathematical Society. Volume 23.
     description: We exploit a symmetry of the group of symmetries of the square to give the asymptotic density of discriminants of D4-extensions of the rationals.
   - title: "A Cautionary Tail: A Framework and Case Study for Testing Predictive Model Validity"
     link: https://arxiv.org/abs/1807.03860
