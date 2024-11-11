@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redraw the States</title>
+    <meta charset="utf-8" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@khayeswilson" />
+    <meta name="twitter:creator" content="@khayeswilson" />
+    <meta property="og:url" content="http://www.kevinhayeswilson.com/redraw" />
+    <meta property="og:title" content="How arbitrary is the Electoral College?" />
+    <meta property="og:description" content="If Philadelphia were part of New Jersey, Donald Trump would have easily won Pennsylvania. How little do state lines need to move for Trump to have won the election? The answer is shockingly small." />
+    <meta property="og:image" content="https://cdn-images-1.medium.com/max/1000/1*3gg9J1xuYsU2PVv6wxrrJw.png" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <link rel="stylesheet" href="css/map.css">
+  </head>
+<body>
+  <div class="hidden tooltip" id="instructionsTooltip">
+    <div class="tooltip-inner">
+      <p class="instructions">Click a county to (de)select it.</p>
+      <p class="instructions">Hold down q to select all counties you mouse over.</p>
+      <p class="instructions">Hold down w to deselect them.</p>
+    </div>
+  </div>
+
+<div class="input-group" id="shareGroup">
+  <input type="text" class="form-control" value="http://woot.com" onclick="this.select();" id="clipboard-target" readonly>
+  <span class="input-group-btn">
+    <button id="copy-button" class="btn btn-secondary" data-clipboard-tooltip data-clipboard-target="#clipboard-target" type="button"><img src="clippy.svg" width="14"></button>
+  </span>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ev-bar">
+        <div class='ev-bar-dem-total'></div>
+        <div class='ev-bar-gop-total'></div>
+      </div>
+    </div>
+  </div> <!-- / ev-bar row -->
+  <div class="row">
+    <div class="col-sm-10" id="states-div">
+      <svg id='states-svg'></svg>
+    </div>
+    <div class="col-sm-2">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="instructions">Instructions</h2>
+          <p class="instructions" id="lede">How few counties can you move to make Donald Trump win the 2020 election?</p>
+          <p class="instructions"><a href="#" id="instructionsHelper">Choose a county</a> (or several) to move to a new state. Then click the <b>Move</b> button and the state you want to move your counties to.</p>
+          <p class="instructions">We'll update the electoral vote after updating the number of electors the state gets.</p>
+          <p class="instructions">Weep at <a href="https://medium.com/@khayeswilson/trump-would-have-won-if-the-united-states-looked-like-this-189b2275cde2">how arbitrary our electoral system is</a>.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-danger btn-md btn-block btn-space" id="switchModeButton"><u>M</u>ove</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-primary btn-md btn-block btn-space" id="countyModeButton">Hide Colors</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <a tabindex=0 role="button" class="btn btn-primary btn-md btn-block btn-space" id="shareButton">Share</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-6 control-label" for="selectYear">Year:</label>
+            <div class="col-sm-6">
+            <select class="form-control" id="selectYear">
+              <option value="2004">2004</option>
+              <option value="2008">2008</option>
+              <option value="2012">2012</option>
+              <option value="2016i">2016 Income</option>
+              <option value="2016">2016</option>
+              <option value="2020" selected="selected">2020</option>
+              <option value="2020s">2020 w/ New Populations</option>
+              <option value="2024" selected="selected">2024</option>
+            </select>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div> <!-- / instructions column -->
+  </div> <!-- / main interface row -->
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Details</h2>
+    <div class="col-sm-12">
+      <table class="table table-striped" style='text-align: right;'>
+        <thead>
+          <td>State</td>
+          <td>Population</td>
+          <td>Electors</td>
+          <td>Democrat</td>
+          <td>GOP</td>
+          <td>Green</td>
+          <td>Libertarian</td>
+          <td>McMullin</td>
+          <td>Other</td>
+        </thead>
+        <tbody id="states"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      Code available on <a href="https://github.com/khwilson/RedrawStates">GitHub</a>.
+      County election data compiled by the <a href="https://nyt.com">New York Times</a>.
+      More acknowledgments available on GitHub.
+      Note that this data is neither complete nor frequently updated.
+      Copyright 2016-2020 <a href="http://github.com/khwilson">Kevin Hayes Wilson</a>.
+    </div>
+  </div>
+</div>
+
+<script src="js/d3.v7.min.js"></script>
+<script src="js/topojson.v3.min.js"></script>
+<script src="js/map.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88197802-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</html>
