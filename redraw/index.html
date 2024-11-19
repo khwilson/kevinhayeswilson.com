@@ -51,7 +51,7 @@
       <div class="row">
         <div class="col-sm-12">
           <h2 class="instructions">Instructions</h2>
-          <p class="instructions" id="lede">How few counties can you move to make Donald Trump win the 2020 election?</p>
+          <p class="instructions" id="lede">How few counties can you move to make Kamala Harris win the 2024 election?</p>
           <p class="instructions"><a href="#" id="instructionsHelper">Choose a county</a> (or several) to move to a new state. Then click the <b>Move</b> button and the state you want to move your counties to.</p>
           <p class="instructions">We'll update the electoral vote after updating the number of electors the state gets.</p>
           <p class="instructions">Weep at <a href="https://medium.com/@khayeswilson/trump-would-have-won-if-the-united-states-looked-like-this-189b2275cde2">how arbitrary our electoral system is</a>.</p>
@@ -86,6 +86,7 @@
               <option value="2016">2016</option>
               <option value="2020" selected="selected">2020</option>
               <option value="2020s">2020 w/ New Populations</option>
+              <option value="2024" selected="selected">2024</option>
             </select>
             </div>
           </div>
@@ -107,7 +108,7 @@
           <td>GOP</td>
           <td>Green</td>
           <td>Libertarian</td>
-          <td>McMullin</td>
+          <td id="unaffiliated-header">Kennedy</td>
           <td>Other</td>
         </thead>
         <tbody id="states"></tbody>
@@ -126,7 +127,7 @@
   </div>
 </div>
 
-<script src="js/d3.v6.min.js"></script>
+<script src="js/d3.v7.min.js"></script>
 <script src="js/topojson.v3.min.js"></script>
 <script src="js/map.js"></script>
 <script>
