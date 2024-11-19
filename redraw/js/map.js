@@ -46,7 +46,7 @@ var setYear = function(newYear) {
       'lib': 'Libertarian Party',
       'una': 'Unaffiliated',
       'oth': 'Other'
-    }
+    };
     loser = 'John Kerry';
   } else if (newYear === '2008') {
     year = newYear;
@@ -58,7 +58,7 @@ var setYear = function(newYear) {
       'lib': 'Libertarian Party',
       'una': 'Unaffiliated',
       'oth': 'Other'
-    }
+    };
     loser = 'John McCain';
   } else if (newYear === '2012') {
     year = newYear;
@@ -70,7 +70,7 @@ var setYear = function(newYear) {
       'lib': 'Gary Johnson',
       'una': 'Unaffiliated',
       'oth': 'Other'
-    }
+    };
     loser = 'Mitt Romney';
   } else if (newYear === '2016i') {
     year = newYear;
@@ -82,7 +82,7 @@ var setYear = function(newYear) {
       'lib': 'Gary Johnson',
       'una': 'Evan McMullin',
       'oth': 'Other'
-    }
+    };
     loser = 'Hillary Clinton';
   } else if (newYear == '2020') {
     year = newYear;
@@ -106,7 +106,19 @@ var setYear = function(newYear) {
       'lib': 'Jo Jorgensen',
       'una': 'Unaffiliated',
       'oth': 'Other'
-    }
+    };
+  } else if (newYear == '2024') {
+    year = newYear;
+    dataFile = 'data/us2024.json',
+    partyToCandidate = {
+      'dem': 'Kamala Harris',
+      'gop': 'Donald Trump',
+      'grn': 'Jill Stein',
+      'lib': 'Oliver Chase',
+      'una': 'Robert Kennedy',
+      'oth': 'Other',
+    };
+    loser = 'Kamala Harris';
   } else {
     year = newYear;
     dataFile = 'data/us.json';
@@ -117,13 +129,13 @@ var setYear = function(newYear) {
       'lib': 'Gary Johnson',
       'una': 'Evan McMullin',
       'oth': 'Other'
-    }
+    };
     loser = 'Hillary Clinton';
   }
 }
 
 {
-  let paramYear = getParameterByName('year') || '2020';
+  let paramYear = getParameterByName('year') || '2024';
   setYear(paramYear);
   document.querySelector("#selectYear option[value='" + year + "']").setAttribute("selected", "selected");
 }
@@ -382,7 +394,6 @@ var update = function() {
                 (state.oth / totalVotes * 100).toFixed(2) + '%'
               ];
       }
-
     })
     .join("td")
     .text(intWithCommas)
@@ -393,6 +404,13 @@ var update = function() {
         return null;
       }
     });
+
+  /* Set the unaffiliated header if it is used */
+  document.getElementById("unaffiliated-header").textContent =
+    year == '2024' ? 'Kennedy' :
+    year == '2016i' ? 'McMullin' :
+    year == '2016' ? 'McMullin' :
+    'Unaffiliated';
 
   /* Draw United States with colors! */
   if (countyMode === 'show') {
